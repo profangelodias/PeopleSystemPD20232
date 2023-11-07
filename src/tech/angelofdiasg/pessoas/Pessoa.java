@@ -1,13 +1,29 @@
 package tech.angelofdiasg.pessoas;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.List;
+
+import tech.angelofdiasg.composicoes.*;
+
 public class Pessoa {
 	private String nome;
-	private String dataNascimento;
-	private String endereco;
-	private String telsContato;
+	private LocalDate dataNascimento;
+	private Endereco endereco;
+	private List<Telefone> telsContato;
 	
-	public void cadastrar(String nome, String dataNascimento,
-			String endereco, String telsContato) {
+	public void cadastraEndereco(String rua, String numero,
+    String cep, String cidade,String estado, String pais) {
+		this.endereco.setCep(cep);
+		this.endereco.setCidade(cidade);
+		this.endereco.setEstado(estado);
+		this.endereco.setNumero(numero);
+		this.endereco.setRua(rua);
+		this.endereco.setPais(pais);
+	}
+	
+	public void cadastrar(String nome, LocalDate dataNascimento,
+			Endereco endereco, List<Telefone> telsContato) {
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.endereco = endereco;
@@ -15,8 +31,9 @@ public class Pessoa {
 	}
 	public int obterIdade() {
 		int idade = 0;
-		//Subtrair ano atual do ano de nascimento
-		return idade;
+		LocalDate dataAtual = LocalDate.now();
+		Period periodo = Period.between(dataNascimento, dataAtual);
+		return idade = periodo.getYears();
 	}
 	
 	public String getNome() {
@@ -25,22 +42,22 @@ public class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	public String getTelsContato() {
+	public List<Telefone> getTelsContato() {
 		return telsContato;
 	}
-	public void setTelsContato(String telsContato) {
+	public void setTelsContato(List<Telefone> telsContato) {
 		this.telsContato = telsContato;
 	}
 	

@@ -8,7 +8,7 @@ public class Cliente extends Pessoa{
 	
 	public void cadastrar(String nome, String dataNascimento,
 			String endereco, String telsContato,
-			String codigo, String profissao) {
+			String codigo, Profissao profissao) {
 		 setNome(nome); 
 		setDataNascimento(dataNascimento);
 		setEndereco(endereco);
